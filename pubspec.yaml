@@ -19,6 +19,13 @@ dependencies:
   percent_indicator: ^4.2.3
   change_app_package_name: ^1.1.0
   easy_localization: ^3.0.2
+  dio: ^5.3.2
+  cached_network_image:
+  curved_navigation_bar:
+  path_provider: ^2.0.15
+  path: ^1.8.3
+  provider: ^6.0.5
+  carousel_slider:
 
 dev_dependencies:
   flutter_test:
