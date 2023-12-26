@@ -1,4 +1,4 @@
-import 'package:default_project/ui/app_routes.dart';
+import 'package:example_app/ui/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(
       const Duration(seconds: 2),
       () {
-        Navigator.pushReplacementNamed(context, RouteNames.welcomeScreen);
+        Navigator.pushReplacementNamed(context, RouteNames.homeScreen);
       },
     );
   }

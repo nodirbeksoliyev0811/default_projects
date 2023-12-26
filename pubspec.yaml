@@ -1,4 +1,4 @@
-name: default_project
+name: example_app
 description: A new Flutter project.
 publish_to: 'none'
 
@@ -10,8 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.6
   zoom_tap_animation: ^1.1.0
@@ -19,6 +17,10 @@ dependencies:
   percent_indicator: ^4.2.3
   change_app_package_name: ^1.1.0
   easy_localization: ^3.0.2
+  cached_network_image: ^3.3.0
+  bloc: ^8.1.2
+  equatable: ^2.0.5
+  flutter_bloc: ^8.1.3
 
 dev_dependencies:
   flutter_test:
@@ -44,6 +46,9 @@ fonts:
       - asset: assets/fonts/Sora-SemiBold.ttf
       - asset: assets/fonts/Sora-Bold.ttf
       - asset: assets/fonts/Sora-ExtraBold.ttf
+  - family: OpenSans
+    fonts:
+      - asset: assets/fonts/OpenSans-Regular.ttf
   - family: Poppins
     fonts:
       - asset: assets/fonts/Poppins-Black.ttf
