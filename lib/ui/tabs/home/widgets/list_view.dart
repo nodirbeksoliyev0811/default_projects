@@ -1,4 +1,3 @@
-import 'package:example_app/utils/images.dart';
 import 'package:example_app/utils/size.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,10 +8,12 @@ class ShowListView extends StatelessWidget {
     super.key,
     this.showTexts = false,
     required this.texts,
+    required this.images,
   });
 
   final bool showTexts;
   final List<String> texts;
+  final List<String> images;
 
   @override
   Widget build(BuildContext context) {
@@ -34,23 +35,59 @@ class ShowListView extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: 292.w,
+                    height: 160.h,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8.r),
-                      child: Image.asset(texts.first == "" ? AppImages.item1 : AppImages.item2, fit: BoxFit.cover),
+                      child: Image.asset(images[index], fit: BoxFit.fill),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.all(10.sp),
-                    color: AppColors.black.withOpacity(0.1),
-                    child: Text(
-                      texts[index],
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 14.spMax,
-                        color: AppColors.white,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: "OpenSans",
+                  texts.first != ""
+                      ? Container(
+                          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.vertical(bottom: Radius.circular(8.r)),
+                              gradient: const LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Colors.transparent,
+                                    AppColors.black,
+                                  ])),
+                          child: Text(
+                            texts[index],
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 13.sp,
+                              color: AppColors.white,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: "OpenSans",
+                            ),
+                          ),
+                        )
+                      : const SizedBox(),
+                  Visibility(
+                    visible: texts.first != "" && index == 0,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 12.w),
+                          decoration: BoxDecoration(
+                            color: AppColors.background,
+                            borderRadius: BorderRadius.circular(8.r),
+                          ),
+                          child: Text(
+                            "Статья",
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              color: AppColors.black,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: "OpenSans",
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),

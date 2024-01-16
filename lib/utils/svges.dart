@@ -10,4 +10,6 @@ class AppIcons{
   static const String location = "assets/svg/location.svg";
   static const String messages = "assets/svg/messages.svg";
   static const String catalog = "assets/svg/catalog.svg";
+  static const String tick = "assets/svg/tick.svg";
+  static const String pinned = "assets/svg/pinned.svg";
 }

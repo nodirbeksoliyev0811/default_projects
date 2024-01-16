@@ -1,5 +1,7 @@
+import 'package:another_transformer_page_view/another_transformer_page_view.dart';
+import 'package:example_app/ui/tabs/home/widgets/my_transformer.dart';
 import 'package:example_app/ui/tabs/home/widgets/page_icon.dart';
-import 'package:example_app/utils/images.dart';
+import 'package:example_app/utils/constans.dart';
 import 'package:example_app/utils/size.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,6 +20,7 @@ class ShowPageView extends StatefulWidget {
 class _ShowPageViewState extends State<ShowPageView> {
   int pageIndex = 0;
   final PageController pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -42,7 +45,7 @@ class _ShowPageViewState extends State<ShowPageView> {
                   final minutes = (state % 3600) ~/ 60;
                   final seconds = state % 60;
                   return Text(
-                    '${hours<=9 && hours!=0 ? 0:""}${hours==0?23:hours} : ${minutes<=9?0:""}$minutes : ${seconds<=9?0:""}$seconds',
+                    '${hours + 23} : ${minutes <= 9 ? 0 : ""}$minutes : ${seconds <= 9 ? 0 : ""}$seconds',
                     style: TextStyle(
                       fontSize: 15.spMax,
                       color: AppColors.grey,
@@ -57,37 +60,25 @@ class _ShowPageViewState extends State<ShowPageView> {
         ),
         18.ph,
         Container(
-          height: 290.h,
-          margin: EdgeInsets.symmetric(horizontal: 6.w),
+          height: 340.h,
+          margin: EdgeInsets.only(right: 6.w),
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r)),
-          child: PageView(
+          child: TransformerPageView(
             onPageChanged: (index) {
               setState(() {
-                pageIndex = index;
+                pageIndex = index!;
               });
             },
-            controller: pageController,
             physics: const BouncingScrollPhysics(),
-            children: const [
-              ItemView(
-                name: "Микроволновая печь соло Gorenje MO17E1W",
-                oldPrise: "2 000 000 сум",
-                prise: "1 750 000 сум",
-                image: AppImages.product,
-              ),
-              ItemView(
-                name: "Микроволновая печь соло Gorenje MO17E1W",
-                oldPrise: "2 500 000 сум",
-                prise: "1 999 000 сум",
-                image: AppImages.product2,
-              ),
-              ItemView(
-                name: "Микроволновая печь соло Gorenje MO17E1W",
-                oldPrise: "1 000 000 сум",
-                prise: "750 000 сум",
-                image: AppImages.product3,
-              ),
-            ],
+            itemCount: names.length,
+            itemBuilder: (context, index) => ItemView(
+              name: names[index],
+              oldPrise: oldPrises[index],
+              prise: prises[index],
+              image: images[index],
+            ),
+            scrollDirection: Axis.horizontal,
+            transformer: MyTransformer(),
           ),
         ),
         11.ph,

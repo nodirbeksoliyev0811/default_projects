@@ -21,21 +21,21 @@ class PageIndexItem extends StatelessWidget {
             ? Container(
                 height: 34.w,
                 width: 34.w,
-                padding: EdgeInsets.all(2.sp),
+                padding: EdgeInsets.all(1.sp),
                 decoration: BoxDecoration(border: Border.all(width: 2.w,color: AppColors.orange), borderRadius: BorderRadius.circular(100.r)),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100.r),
-                  child: Image.asset(AppImages.product, fit: BoxFit.cover),
+                  child: Image.asset(AppImages.product, fit: BoxFit.fitWidth),
                 ),
               )
             : Container(
                 height: 34.w,
                 width: 34.w,
-                padding: EdgeInsets.all(2.sp),
+                padding: EdgeInsets.all(1.sp),
                 decoration: BoxDecoration(border: Border.all(width: 2.w,color: AppColors.white), borderRadius: BorderRadius.circular(100.r)),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100.r),
-                  child: Image.asset(AppImages.product, fit: BoxFit.cover),
+                  child: Image.asset(AppImages.product, fit: BoxFit.fitWidth),
                 ),
               ),
         8.pw,
@@ -43,21 +43,21 @@ class PageIndexItem extends StatelessWidget {
             ? Container(
                 height: 34.w,
                 width: 34.w,
-                padding: EdgeInsets.all(2.sp),
+                padding: EdgeInsets.all(1.sp),
                 decoration: BoxDecoration(border: Border.all(width: 2.w,color: AppColors.orange), borderRadius: BorderRadius.circular(100.r)),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100.r),
-                  child: Image.asset(AppImages.product2, fit: BoxFit.cover),
+                  child: Image.asset(AppImages.iphone,fit: BoxFit.fitHeight),
                 ),
               )
             : Container(
                 height: 34.w,
                 width: 34.w,
-                padding: EdgeInsets.all(2.sp),
+                padding: EdgeInsets.all(1.sp),
                 decoration: BoxDecoration(border: Border.all(width: 2.w,color: AppColors.white), borderRadius: BorderRadius.circular(100.r)),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100.r),
-                  child: Image.asset(AppImages.product2, fit: BoxFit.cover),
+                  child: Image.asset(AppImages.iphone, fit: BoxFit.fitHeight),
                 ),
               ),
         8.pw,
@@ -65,21 +65,21 @@ class PageIndexItem extends StatelessWidget {
             ? Container(
                 height: 34.w,
                 width: 34.w,
-                padding: EdgeInsets.all(2.sp),
+                padding: EdgeInsets.all(1.sp),
                 decoration: BoxDecoration(border: Border.all(width: 2.w,color: AppColors.orange), borderRadius: BorderRadius.circular(100.r)),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100.r),
-                  child: Image.asset(AppImages.product3, fit: BoxFit.cover),
+                  child: Image.asset(AppImages.armchain, fit: BoxFit.fitWidth),
                 ),
               )
             : Container(
                 height: 34.w,
                 width: 34.w,
-                padding: EdgeInsets.all(2.sp),
+                padding: EdgeInsets.all(1.sp),
                 decoration: BoxDecoration(border: Border.all(width: 2.w,color: AppColors.white), borderRadius: BorderRadius.circular(100.r)),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100.r),
-                  child: Image.asset(AppImages.product3, fit: BoxFit.cover),
+                  child: Image.asset(AppImages.armchain, fit: BoxFit.fitWidth),
                 ),
               ),
       ],

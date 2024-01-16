@@ -22,9 +22,10 @@ class ShowTabView extends StatelessWidget {
               labelColor: AppColors.orange,
               unselectedLabelColor: AppColors.grey,
               indicatorColor: AppColors.orange,
-              indicatorWeight: 1,
+              indicatorWeight: 1.5.w,
               physics: const BouncingScrollPhysics(),
               isScrollable: true,
+              indicatorPadding: EdgeInsets.symmetric(horizontal: 15.w),
               tabs: [
                 Tab(text: tr("Новинки")),
                 Tab(text: tr("Популярное")),
@@ -56,7 +57,7 @@ class ShowTabView extends StatelessWidget {
                               name: "Микроволновая печь соло Gorenje MO17E1W",
                               oldPrise: "${index + 2} 000 000 сум",
                               prise: "${index + 1} 7${index}0 000 сум",
-                              image: [AppImages.product,AppImages.product2,AppImages.product3][index],
+                              image: [AppImages.product, AppImages.product2, AppImages.product3][index],
                               isLine: true,
                             ),
                           ),
@@ -64,7 +65,29 @@ class ShowTabView extends StatelessWidget {
                         26.ph,
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 16.w),
-                          child: SizedBox(width: 375.w, child: GlobalButton(onTap: () {}, text: "Смотреть все 15")),
+                          child: SizedBox(width: 375.w, child: GlobalButton(onTap: () {ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              backgroundColor: AppColors.grey.withOpacity(0.9),
+                              elevation: 0,
+                              duration: const Duration(milliseconds: 700),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+                              behavior: SnackBarBehavior.floating,
+                              padding: EdgeInsets.all(5.sp),
+                              dismissDirection: DismissDirection.horizontal,
+                              width: 150.w,
+                              content: Center(
+                                child: Text(
+                                  "Смотреть все 15",
+                                  style: TextStyle(
+                                    fontSize: 14.spMax,
+                                    color: AppColors.white,
+                                    fontWeight: FontWeight.w700,
+                                    fontFamily: "OpenSans",
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );}, text: "Смотреть все 15")),
                         ),
                       ],
                     ),
@@ -79,7 +102,7 @@ class ShowTabView extends StatelessWidget {
                               name: "Микроволновая печь соло Gorenje MO17E1W",
                               oldPrise: "${index + 2} 000 000 сум",
                               prise: "${index + 1} 7${index}0 000 сум",
-                              image: [AppImages.product2,AppImages.product3,AppImages.product][index],
+                              image: [AppImages.product2, AppImages.product3, AppImages.product][index],
                               isLine: true,
                             ),
                           ),
@@ -87,7 +110,29 @@ class ShowTabView extends StatelessWidget {
                         26.ph,
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 16.w),
-                          child: SizedBox(width: 375.w, child: GlobalButton(onTap: () {}, text: "Смотреть все 25")),
+                          child: SizedBox(width: 375.w, child: GlobalButton(onTap: () {ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              backgroundColor: AppColors.grey.withOpacity(0.9),
+                              elevation: 0,
+                              duration: const Duration(milliseconds: 700),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+                              behavior: SnackBarBehavior.floating,
+                              padding: EdgeInsets.all(5.sp),
+                              dismissDirection: DismissDirection.horizontal,
+                              width: 150.w,
+                              content: Center(
+                                child: Text(
+                                  "Смотреть все 25",
+                                  style: TextStyle(
+                                    fontSize: 14.spMax,
+                                    color: AppColors.white,
+                                    fontWeight: FontWeight.w700,
+                                    fontFamily: "OpenSans",
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );}, text: "Смотреть все 25")),
                         ),
                       ],
                     ),
@@ -102,7 +147,7 @@ class ShowTabView extends StatelessWidget {
                               name: "Микроволновая печь соло Gorenje MO17E1W",
                               oldPrise: "${index + 2} 000 000 сум",
                               prise: "${index + 1} 7${index}0 000 сум",
-                              image: [AppImages.product3,AppImages.product,AppImages.product2][index],
+                              image: [AppImages.product3, AppImages.product, AppImages.product2][index],
                               isLine: true,
                             ),
                           ),
@@ -110,7 +155,35 @@ class ShowTabView extends StatelessWidget {
                         26.ph,
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 16.w),
-                          child: SizedBox(width: 375.w, child: GlobalButton(onTap: () {}, text: "Смотреть все 20")),
+                          child: SizedBox(
+                              width: 375.w,
+                              child: GlobalButton(
+                                  onTap: () {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        backgroundColor: AppColors.grey.withOpacity(0.9),
+                                        elevation: 0,
+                                        duration: const Duration(milliseconds: 700),
+                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+                                        behavior: SnackBarBehavior.floating,
+                                        padding: EdgeInsets.all(5.sp),
+                                        dismissDirection: DismissDirection.horizontal,
+                                        width: 150.w,
+                                        content: Center(
+                                          child: Text(
+                                            "Смотреть все 20",
+                                            style: TextStyle(
+                                              fontSize: 14.spMax,
+                                              color: AppColors.white,
+                                              fontWeight: FontWeight.w700,
+                                              fontFamily: "OpenSans",
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  text: "Смотреть все 20")),
                         ),
                       ],
                     ),

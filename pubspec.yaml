@@ -21,6 +21,7 @@ dependencies:
   bloc: ^8.1.2
   equatable: ^2.0.5
   flutter_bloc: ^8.1.3
+  another_transformer_page_view: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -37,34 +38,8 @@ flutter:
     - assets/svg/
     - assets/translations/
 
-fonts:
-  - family: Sora
-    fonts:
-      - asset: assets/fonts/Sora-Regular.ttf
-      - asset: assets/fonts/Sora-Light.ttf
-      - asset: assets/fonts/Sora-Medium.ttf
-      - asset: assets/fonts/Sora-SemiBold.ttf
-      - asset: assets/fonts/Sora-Bold.ttf
-      - asset: assets/fonts/Sora-ExtraBold.ttf
+  fonts:
   - family: OpenSans
     fonts:
       - asset: assets/fonts/OpenSans-Regular.ttf
-  - family: Poppins
-    fonts:
-      - asset: assets/fonts/Poppins-Black.ttf
-      - asset: assets/fonts/Poppins-BlackItalic.ttf
-      - asset: assets/fonts/Poppins-Bold.ttf
-      - asset: assets/fonts/Poppins-BoldItalic.ttf
-      - asset: assets/fonts/Poppins-ExtraBold.ttf
-      - asset: assets/fonts/Poppins-ExtraBoldItalic.ttf
-      - asset: assets/fonts/Poppins-Italic.ttf
-      - asset: assets/fonts/Poppins-Light.ttf
-      - asset: assets/fonts/Poppins-LightItalic.ttf
-      - asset: assets/fonts/Poppins-Medium.ttf
-      - asset: assets/fonts/Poppins-MediumItalic.ttf
-      - asset: assets/fonts/Poppins-Regular.ttf
-      - asset: assets/fonts/Poppins-SemiBold.ttf
-      - asset: assets/fonts/Poppins-SemiBoldItalic.ttf
-      - asset: assets/fonts/Poppins-Thin.ttf
-      - asset: assets/fonts/Poppins-ThinItalic.ttf
-        style: italic
+      - asset: assets/fonts/OpenSans-Bold.ttf

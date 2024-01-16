@@ -12,7 +12,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../../../data/cubit/timer_cubit.dart';
 import '../../../utils/svges.dart';
 
@@ -29,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     context.read<TimerCubit>().startTimer();
     super.initState();
   }
+
   int pageIndex = 0;
   final PageController pageController = PageController();
 
@@ -45,12 +45,33 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         backgroundColor: AppColors.background,
         elevation: 0,
-        leading: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
-          child: ZoomTapAnimation(
-            onTap: () {},
-            child: SizedBox(height: 30.w,width: 30.w,child: SvgPicture.asset(AppIcons.location)),
-          ),
+        leading: TextButton(
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                backgroundColor: AppColors.grey.withOpacity(0.9),
+                elevation: 0,
+                duration: const Duration(milliseconds: 700),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+                behavior: SnackBarBehavior.floating,
+                padding: EdgeInsets.all(5.sp),
+                dismissDirection: DismissDirection.horizontal,
+                width: 90.w,
+                content: Center(
+                  child: Text(
+                    "Location",
+                    style: TextStyle(
+                      fontSize: 14.spMax,
+                      color: AppColors.white,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: "OpenSans",
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
+          child: SizedBox(height: 30.w, width: 30.w, child: SvgPicture.asset(AppIcons.location)),
         ),
         centerTitle: true,
         title: Text(
@@ -59,24 +80,45 @@ class _HomeScreenState extends State<HomeScreen> {
             letterSpacing: 1,
             color: AppColors.orange,
             fontSize: 18.spMax,
-            fontWeight: FontWeight.w800,
+            fontWeight: FontWeight.w900,
             fontFamily: "OpenSans",
           ),
         ),
         actions: [
-          ZoomTapAnimation(
-            onTap: () {},
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
-              child: SizedBox(height: 28.w,width: 28.w,child: SvgPicture.asset(AppIcons.messages)),
-            ),
+          TextButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  backgroundColor: AppColors.grey.withOpacity(0.9),
+                  elevation: 0,
+                  duration: const Duration(milliseconds: 700),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+                  behavior: SnackBarBehavior.floating,
+                  padding: EdgeInsets.all(5.sp),
+                  dismissDirection: DismissDirection.horizontal,
+                  width: 90.w,
+                  content: Center(
+                    child: Text(
+                      "Messages",
+                      style: TextStyle(
+                        fontSize: 14.spMax,
+                        color: AppColors.white,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: "OpenSans",
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
+            child: SizedBox(height: 28.w, width: 28.w, child: SvgPicture.asset(AppIcons.messages)),
           ),
         ],
       ),
       body: GlobalSliver(
         content: const ContentView(),
         body: Container(
-          padding: EdgeInsets.only(top: 20.h),
+          padding: EdgeInsets.only(top: 5.h),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.vertical(top: Radius.circular(8.r)),
             color: AppColors.white,
@@ -84,41 +126,82 @@ class _HomeScreenState extends State<HomeScreen> {
           child: ListView(
             physics: const BouncingScrollPhysics(),
             children: [
+              15.ph,
               Container(
+                height: 55.h,
                 margin: EdgeInsets.symmetric(horizontal: 16.w),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.r),
                   color: AppColors.background,
                 ),
-                child: TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 15.h),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
-                  ),
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(AppIcons.search),
-                      14.pw,
-                      Text(
-                        "Поиск товаров",
-                        style: TextStyle(
-                          fontSize: 14.spMax,
-                          color: AppColors.grey,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: "OpenSans",
-                        ),
+                child: TextField(
+                  style: TextStyle(fontSize: 16.sp, height: 1.5.h, color: Colors.black),
+                  cursorColor: AppColors.orange,
+                  textAlignVertical: TextAlignVertical.bottom,
+                  textInputAction: TextInputAction.search,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.r),
+                      borderSide: const BorderSide(
+                        color: Colors.transparent,
                       ),
-                    ],
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.r),
+                      borderSide: const BorderSide(
+                        color: Colors.transparent,
+                      ),
+                    ),
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(15.sp),
+                      child: SvgPicture.asset(AppIcons.search),
+                    ),
+                    hintText: "Поиск товаров",
+                    hintStyle: TextStyle(
+                      fontSize: 14.spMax,
+                      color: AppColors.grey,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: "OpenSans",
+                    ),
                   ),
                 ),
               ),
               18.ph,
-              const ShowListView(texts: ["", "", ""]),
+              const ShowListView(
+                texts: ["", "", ""],
+                images: [AppImages.item1, AppImages.item3, AppImages.item1],
+              ),
               20.ph,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w),
-                child: GlobalButton(onTap: () {}, text: "Все акции"),
+                child: GlobalButton(
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: AppColors.grey.withOpacity(0.9),
+                        elevation: 0,
+                        duration: const Duration(milliseconds: 700),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+                        behavior: SnackBarBehavior.floating,
+                        padding: EdgeInsets.all(5.sp),
+                        dismissDirection: DismissDirection.horizontal,
+                        width: 100.w,
+                        content: Center(
+                          child: Text(
+                            "Все акции",
+                            style: TextStyle(
+                              fontSize: 14.spMax,
+                              color: AppColors.white,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: "OpenSans",
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                  text: "Все акции",
+                ),
               ),
               50.ph,
               const ShowPageView(),
@@ -159,16 +242,45 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               20.ph,
-              const ShowListView(texts: [
-                "Топ-21 лучших недорогих планшетов на сегодняшний день",
-                "Топ-22 лучших недорогих планшетов на сегодняшний день",
-                "Топ-23 лучших недорогих планшетов на сегодняшний день",
-                "Топ-24 лучших недорогих планшетов на сегодняшний день",
-              ]),
+              const ShowListView(
+                texts: [
+                  "Топ-21 лучших недорогих планшетов на сегодняшний день",
+                  "Топ-22 лучших недорогих планшетов на сегодняшний день",
+                  "Топ-23 лучших недорогих планшетов на сегодняшний день",
+                  "Топ-24 лучших недорогих планшетов на сегодняшний день",
+                ],
+                images: [AppImages.item2, AppImages.item2, AppImages.item2, AppImages.item2],
+              ),
               20.ph,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w),
-                child: GlobalButton(onTap: () {}, text: "Читать все"),
+                child: GlobalButton(
+                    onTap: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: AppColors.grey.withOpacity(0.9),
+                          elevation: 0,
+                          duration: const Duration(milliseconds: 700),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+                          behavior: SnackBarBehavior.floating,
+                          padding: EdgeInsets.all(5.sp),
+                          dismissDirection: DismissDirection.horizontal,
+                          width: 110.w,
+                          content: Center(
+                            child: Text(
+                              "Читать все",
+                              style: TextStyle(
+                                fontSize: 14.spMax,
+                                color: AppColors.white,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: "OpenSans",
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    text: "Читать все"),
               ),
               84.ph,
               Container(
@@ -199,7 +311,33 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         6.ph,
-                        GlobalButton(onTap: () {}, text: "Каталог")
+                        GlobalButton(
+                            onTap: () {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  backgroundColor: AppColors.grey.withOpacity(0.9),
+                                  elevation: 0,
+                                  duration: const Duration(milliseconds: 700),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+                                  behavior: SnackBarBehavior.floating,
+                                  padding: EdgeInsets.all(5.sp),
+                                  dismissDirection: DismissDirection.horizontal,
+                                  width: 90.w,
+                                  content: Center(
+                                    child: Text(
+                                      "Каталог",
+                                      style: TextStyle(
+                                        fontSize: 14.spMax,
+                                        color: AppColors.white,
+                                        fontWeight: FontWeight.w700,
+                                        fontFamily: "OpenSans",
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                            text: "Каталог")
                       ],
                     ),
                     const Spacer(),

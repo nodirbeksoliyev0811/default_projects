@@ -45,103 +45,216 @@ class ContentView extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView(
-              physics: const BouncingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              children: [
-                8.pw,
-                ...List.generate(
-                  12,
-                      (index) => Container(
-                    height: 160.h,
-                    width: 292.w,
-                    margin: EdgeInsets.symmetric(horizontal: 8.w),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r), color: AppColors.white),
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: Alignment.bottomRight,
-                          child: Image.asset(AppImages.box, width: 105.w),
+            child: ListView.separated(
+              itemCount: 3,
+              itemBuilder: (context, index) => Container(
+                height: 160.h,
+                width: 292.w,
+                margin: EdgeInsets.symmetric(horizontal: 8.w),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r), color: AppColors.white),
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Image.asset(AppImages.box, width: 105.w),
+                    ),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: ZoomTapAnimation(
+                        onTap: () {},
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
+                          child: SvgPicture.asset(AppIcons.tick),
                         ),
-                        Align(
-                          alignment: Alignment.topRight,
-                          child: ZoomTapAnimation(
-                            onTap: (){},
-                            child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
-                              height: 30.w,
-                              width: 30.w,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.r),
-                                color: AppColors.green.withOpacity(0.5),
-                              ),
-                              child: Center(child: Icon(Icons.done_rounded, color: AppColors.green)),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(15.sp),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Готов к выдаче",
+                            style: TextStyle(
+                              fontSize: 16.spMax,
+                              color: AppColors.orange,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: "OpenSans",
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(15.sp),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Готов к выдаче",
+                          10.ph,
+                          Text(
+                            "Заказ №10021122",
+                            style: TextStyle(
+                              fontSize: 14.spMax,
+                              color: AppColors.grey,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: "OpenSans",
+                            ),
+                          ),
+                          13.ph,
+                          Text(
+                            "Самовывоз до 29 марта",
+                            style: TextStyle(
+                              fontSize: 14.spMax,
+                              color: AppColors.black,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: "OpenSans",
+                            ),
+                          ),
+                          const Spacer(),
+                          ZoomTapAnimation(
+                            onTap: () {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  backgroundColor: AppColors.grey.withOpacity(0.9),
+                                  elevation: 0,
+                                  duration: const Duration(milliseconds: 700),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+                                  behavior: SnackBarBehavior.floating,
+                                  padding: EdgeInsets.all(5.sp),
+                                  dismissDirection: DismissDirection.horizontal,
+                                  width: 130.w,
+                                  content: Center(
+                                    child: Text(
+                                      "Забрать заказ",
+                                      style: TextStyle(
+                                        fontSize: 14.spMax,
+                                        color: AppColors.white,
+                                        fontWeight: FontWeight.w700,
+                                        fontFamily: "OpenSans",
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 6.h),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8.r),
+                                color: AppColors.orange,
+                              ),
+                              child: Text(
+                                "Забрать заказ",
                                 style: TextStyle(
-                                  fontSize: 16.spMax,
-                                  color: AppColors.orange,
+                                  fontSize: 14.spMax,
+                                  color: AppColors.white,
                                   fontWeight: FontWeight.w700,
                                   fontFamily: "OpenSans",
                                 ),
                               ),
-                              10.ph,
-                              Text(
-                                "Заказ №10021122",
-                                style: TextStyle(
-                                  fontSize: 14.spMax,
-                                  color: AppColors.grey,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: "OpenSans",
-                                ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              separatorBuilder: (context, index) => Container(
+                height: 160.h,
+                width: 292.w,
+                margin: EdgeInsets.symmetric(horizontal: 8.w),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r), color: AppColors.white),
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Image.asset(AppImages.box, width: 105.w),
+                    ),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: ZoomTapAnimation(
+                        onTap: () {},
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
+                          child: SvgPicture.asset(AppIcons.tick),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(15.sp),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: 230.w,
+                            child: Text(
+                              "Как вам работа приложения?",
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 16.spMax,
+                                color: AppColors.orange,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: "OpenSans",
                               ),
-                              13.ph,
-                              Text(
-                                "Самовывоз до 29 марта",
-                                style: TextStyle(
-                                  fontSize: 14.spMax,
-                                  color: AppColors.black,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: "OpenSans",
-                                ),
-                              ),
-                              const Spacer(),
-                              ZoomTapAnimation(
-                                onTap: (){},
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 6.h),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.r),
-                                    color: AppColors.orange,
-                                  ),
-                                  child: Text(
-                                    "Забрать заказ",
-                                    style: TextStyle(
-                                      fontSize: 14.spMax,
-                                      color: AppColors.white,
-                                      fontWeight: FontWeight.w700,
-                                      fontFamily: "OpenSans",
+                            ),
+                          ),
+                          10.ph,
+                          Text(
+                            "Нам важно ваше мнение",
+                            style: TextStyle(
+                              fontSize: 14.spMax,
+                              color: AppColors.grey,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: "OpenSans",
+                            ),
+                          ),
+                          13.ph,
+                          const Spacer(),
+                          ZoomTapAnimation(
+                            onTap: () {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  backgroundColor: AppColors.grey.withOpacity(0.9),
+                                  elevation: 0,
+                                  duration: const Duration(milliseconds: 700),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+                                  behavior: SnackBarBehavior.floating,
+                                  padding: EdgeInsets.all(5.sp),
+                                  dismissDirection: DismissDirection.horizontal,
+                                  width: 100.w,
+                                  content: Center(
+                                    child: Text(
+                                      "Оценить",
+                                      style: TextStyle(
+                                        fontSize: 14.spMax,
+                                        color: AppColors.white,
+                                        fontWeight: FontWeight.w700,
+                                        fontFamily: "OpenSans",
+                                      ),
                                     ),
                                   ),
                                 ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
+                              );
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 6.h),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8.r),
+                                color: AppColors.orange,
+                              ),
+                              child: Text(
+                                "Оценить",
+                                style: TextStyle(
+                                  fontSize: 14.spMax,
+                                  color: AppColors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: "OpenSans",
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-                8.pw,
-              ],
+              ),
+              physics: const BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
             ),
           ),
         ],
